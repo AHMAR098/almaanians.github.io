@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poems - StoryVerse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .filter-section {
+            padding: 2rem 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .content-grid {
+            padding: 3rem 0;
+        }
+        
+        .content-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .content-item {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .content-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .content-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background-color: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the same header as index.html -->
+    <header class="header">
+        <!-- Same navbar content -->
+    </header>
+
+    <main>
+        <section class="category-header">
+            <div class="container">
+                <h1><i class="fas fa-feather"></i> Poems</h1>
+                <p>Discover beautiful poetry from our community</p>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="container">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="latest">Latest</button>
+                    <button class="filter-btn" data-filter="trending">Trending</button>
+                    <button class="filter-btn" data-filter="most-liked">Most Liked</button>
+                    <button class="filter-btn" data-filter="featured">Featured</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <div class="container">
+                <div class="content-list" id="contentList">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include the same footer as index.html -->
+    <footer class="footer">
+        <!-- Same footer content -->
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Category-specific JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCategoryContent('poems', 'latest');
+            
+            // Filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.getAttribute('data-filter');
+                    loadCategoryContent('poems', filter);
+                });
+            });
+        });
+
+        function loadCategoryContent(category, filter) {
+            // Simulate loading content based on category and filter
+            const contentList = document.getElementById('contentList');
+            
+            // Sample poems data
+            const poems = [
+                {
+                    title: "Whispers of Dawn",
+                    author: "Emma Thompson",
+                    excerpt: "In the quiet moments before sunrise, when the world holds its breath...",
+                    likes: 234,
+                    comments: 18,
+                    bookmarks: 67
+                },
+                {
+                    title: "City Rain",
+                    author: "Marcus Rodriguez",
+                    excerpt: "Droplets dance on concrete dreams, washing away yesterday's sins...",
+                    likes: 189,
+                    comments: 23,
+                    bookmarks: 45
+                },
+                {
+                    title: "Digital Love",
+                    author: "Aisha Patel",
+                    excerpt: "Hearts connected through fiber optic cables, love in the age of WiFi...",
+                    likes: 312,
+                    comments: 41,
+                    bookmarks: 89
+                }
+            ];
+
+            contentList.innerHTML = poems.map(poem => `
+                <div class="content-item">
+                    <h3>${poem.title}</h3>
+                    <p class="author">by ${poem.author}</p>
+                    <p class="excerpt">${poem.excerpt}</p>
+                    <div class="content-actions">
+                        <button class="action-btn" title="Like">
+                            <i class="fas fa-heart"></i> ${poem.likes}
+                        </button>
+                        <button class="action-btn" title="Comment">
+                            <i class="fas fa-comment"></i> ${poem.comments}
+                        </button>
+                        <button class="action-btn" title="Bookmark">
+                            <i class="fas fa-bookmark"></i> ${poem.bookmarks}
+                        </button>
+                        <button class="action-btn" title="Share">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
