@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Content - StoryVerse</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .upload-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-textarea {
+            min-height: 300px;
+            resize: vertical;
+            font-family: var(--font-family);
+        }
+        
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+        }
+        
+        .cover-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cover-upload:hover {
+            border-color: var(--primary-color);
+            background-color: var(--bg-secondary);
+        }
+        
+        .tag-input-container {
+            position: relative;
+        }
+        
+        .tags-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag-item {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tag-remove {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the same header -->
+    <header class="header">
+        <!-- Same navbar content -->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="upload-container">
+                <h1><i class="fas fa-pen"></i> Upload Your Content</h1>
+                <p>Share your story with the world</p>
+
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-group">
+                        <label class="form-label" for="title">Title *</label>
+                        <input type="text" id="title" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="category">Category *</label>
+                        <select id="category" class="form-input form-select" required>
+                            <option value="">Select a category</option>
+                            <option value="poems">Poems</option>
+                            <option value="short-poem-reel">Short Poem Reel</option>
+                            <option value="thoughts">Thoughts</option>
+                            <option value="novels">Novels</option>
+                            <option value="short-stories">Short Stories</option>
+                            <option value="talk">Talk</option>
+                            <option value="suggestions">Suggestions</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea id="description" class="form-input" rows="3" placeholder="Brief description of your content..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="content">Content *</label>
+                        <textarea id="content" class="form-input form-textarea" placeholder="Write your story here..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Cover Image</label>
+                        <div class="cover-upload" onclick="document.getElementById('coverInput').click()">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: var(--text-secondary);"></i>
+                            <p>Click to upload cover image</p>
+                            <input type="file" id="coverInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="tags">Tags</label>
+                        <div class="tag-input-container">
+                            <input type="text" id="tags" class="form-input" placeholder="Add tags (press Enter to add)">
+                            <div class="tags-display" id="tagsDisplay"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                            <i class="fas fa-upload"></i> Publish Content
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setupUploadForm();
+        });
+
+        function setupUploadForm() {
+            const tagsInput = document.getElementById('tags');
+            const tagsDisplay = document.getElementById('tagsDisplay');
+            const uploadForm = document.getElementById('uploadForm');
+            let tags = [];
+
+            // Tag input functionality
+            tagsInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const tag = tagsInput.value.trim();
+                    if (tag && !tags.includes(tag)) {
+                        tags.push(tag);
+                        updateTagsDisplay();
+                        tagsInput.value = '';
+                    }
+                }
+            });
+
+            function updateTagsDisplay() {
+                tagsDisplay.innerHTML = tags.map(tag => `
+                    <span class="tag-item">
+                        ${tag}
+                        <button type="button" class="tag-remove" onclick="removeTag('${tag}')">×</button>
+                    </span>
+                `).join('');
+            }
+
+            window.removeTag = (tagToRemove) => {
+                tags = tags.filter(tag => tag !== tagToRemove);
+                updateTagsDisplay();
+            };
+
+            // Form submission
+            uploadForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = {
+                    title: document.getElementById('title').value,
+                    category: document.getElementById('category').value,
+                    description: document.getElementById('description').value,
+                    content: document.getElementById('content').value,
+                    tags: tags
+                };
+
+                console.log('Submitting content:', formData);
+                alert('Content uploaded successfully! (This would connect to your backend API)');
+            });
+
+            // Cover image preview
+            document.getElementById('coverInput').addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const coverUpload = document.querySelector('.cover-upload');
+                        coverUpload.innerHTML = `
+                            <img src="${e.target.result}" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px;">
+                            <p>Click to change image</p>
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
