@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryVerse - Share Your Stories</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h2>StoryVerse</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#discover">Discover</a></li>
+                    <li><a href="#write">Write</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Stories That Move You</h1>
+                <p>Join millions of readers and writers sharing their passion for storytelling</p>
+                <div class="search-container">
+                    <input type="text" placeholder="Search stories, authors, or topics..." class="search-input">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="container">
+                <h2>Explore Categories</h2>
+                <div class="category-grid">
+                    <div class="category-card" data-category="poems">
+                        <div class="category-icon">
+                            <i class="fas fa-feather"></i>
+                        </div>
+                        <h3>Poems</h3>
+                        <p>Express emotions through verse</p>
+                    </div>
+                    <div class="category-card" data-category="short-poem-reel">
+                        <div class="category-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Short Poem Reel</h3>
+                        <p>Quick poetic moments</p>
+                    </div>
+                    <div class="category-card" data-category="thoughts">
+                        <div class="category-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Thoughts</h3>
+                        <p>Share your reflections</p>
+                    </div>
+                    <div class="category-card" data-category="novels">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Novels</h3>
+                        <p>Epic stories and adventures</p>
+                    </div>
+                    <div class="category-card" data-category="short-stories">
+                        <div class="category-icon">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                        <h3>Short Stories</h3>
+                        <p>Quick reads with impact</p>
+                    </div>
+                    <div class="category-card" data-category="talk">
+                        <div class="category-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Talk</h3>
+                        <p>Discussions and Q&A</p>
+                    </div>
+                    <div class="category-card" data-category="suggestions">
+                        <div class="category-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Suggestions</h3>
+                        <p>Feedback and ideas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Section -->
+        <section class="trending">
+            <div class="container">
+                <h2>Trending Now</h2>
+                <div class="trending-grid">
+                    <div class="story-card">
+                        <div class="story-cover">
+                            <img src="https://via.placeholder.com/200x280/6366f1/ffffff?text=Story+1" alt="Story Cover">
+                        </div>
+                        <div class="story-info">
+                            <h3>The Midnight Garden</h3>
+                            <p class="author">by Sarah Chen</p>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 1.2k</span>
+                                <span><i class="fas fa-eye"></i> 5.4k</span>
+                            </div>
+                            <div class="story-tags">
+                                <span class="tag">Romance</span>
+                                <span class="tag">Fantasy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-cover">
+                            <img src="https://via.placeholder.com/200x280/10b981/ffffff?text=Story+2" alt="Story Cover">
+                        </div>
+                        <div class="story-info">
+                            <h3>City Lights</h3>
+                            <p class="author">by Alex Rivera</p>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 890</span>
+                                <span><i class="fas fa-eye"></i> 3.2k</span>
+                            </div>
+                            <div class="story-tags">
+                                <span class="tag">Drama</span>
+                                <span class="tag">Contemporary</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-cover">
+                            <img src="https://via.placeholder.com/200x280/f59e0b/ffffff?text=Story+3" alt="Story Cover">
+                        </div>
+                        <div class="story-info">
+                            <h3>Ocean's Call</h3>
+                            <p class="author">by Maria Santos</p>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 2.1k</span>
+                                <span><i class="fas fa-eye"></i> 7.8k</span>
+                            </div>
+                            <div class="story-tags">
+                                <span class="tag">Adventure</span>
+                                <span class="tag">Mystery</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-card">
+                        <div class="story-cover">
+                            <img src="https://via.placeholder.com/200x280/ef4444/ffffff?text=Story+4" alt="Story Cover">
+                        </div>
+                        <div class="story-info">
+                            <h3>Digital Dreams</h3>
+                            <p class="author">by Jordan Kim</p>
+                            <div class="story-stats">
+                                <span><i class="fas fa-heart"></i> 1.5k</span>
+                                <span><i class="fas fa-eye"></i> 4.7k</span>
+                            </div>
+                            <div class="story-tags">
+                                <span class="tag">Sci-Fi</span>
+                                <span class="tag">Thriller</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StoryVerse</h3>
+                    <p>A platform for storytellers and readers to connect, share, and discover amazing stories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#guidelines">Guidelines</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#feedback">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StoryVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
